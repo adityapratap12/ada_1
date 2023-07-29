@@ -4,7 +4,7 @@ phases:
   install:
     runtime-versions:
       java: openjdk8
-      flutter: 2.5.2 # Replace this with your desired Flutter version
+      flutter: 3.10.6 # Replace this with your desired Flutter version
     commands:
       # Set up Flutter and Android SDK
       - echo "Installing Flutter"
