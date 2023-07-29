@@ -1,0 +1,27 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: openjdk8
+      flutter: 2.5.2 # Replace this with your desired Flutter version
+    commands:
+      # Set up Flutter and Android SDK
+      - echo "Installing Flutter"
+      - git clone https://github.com/flutter/flutter.git -b stable
+      - export PATH=$PWD/flutter/bin:$PWD/flutter/bin/cache/dart-sdk/bin:$PATH
+      - flutter doctor
+      - echo "Installing Android SDK"
+      - sudo apt-get update -y
+      - sudo apt-get install -y android-sdk
+      - echo "sdk.dir=$PWD/flutter/bin/cache/artifacts/engine/android-x64" > local.properties
+
+  build:
+    commands:
+      # Build the APK
+      - echo "Building APK"
+      - flutter build apk
+
+artifacts:
+  files:
+    - build/app/outputs/flutter-apk/app-release.apk
