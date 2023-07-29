@@ -3,8 +3,8 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-#      java: corretto19.0.1
-      flutter: 3.10.6 # Replace this with your desired Flutter version
+      java: corretto19.0.1
+#      flutter: 3.10.6 # Replace this with your desired Flutter version
     commands:
       # Set up Flutter and Android SDK
       - echo "Installing Flutter"
