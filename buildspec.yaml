@@ -4,7 +4,6 @@ phases:
   install:
     runtime-versions:
       java: corretto11
-      android: 29
     commands:
       - echo $CODEBUILD_SRC_DIR
   pre_build:
