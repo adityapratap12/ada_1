@@ -3,8 +3,8 @@ run-as: root
 phases:
   install:
     runtime-versions:
-      android: 29
       java: corretto11
+      android: 29
     commands:
       - echo $CODEBUILD_SRC_DIR
   pre_build:
