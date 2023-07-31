@@ -1,26 +1,27 @@
 version: 0.2
+run-as: root
 phases:
   install:
     runtime-versions:
-      android: 29
-      java: corretto8
+      java: corretto11
     commands:
-      - pwd
+      - echo $CODEBUILD_SRC_DIR
   pre_build:
     commands:
-      - echo Pre Build started on `date`
-      - git clone https://github.com/flutter/flutter.git -b stable
-      - export PATH="$PATH:`pwd`/flutter/bin"
+      - echo Installing flutter dependencies
+      - export FLUTTER_SDK=$CODEBUILD_SRC_DIR/flutter-sdk
+      - mkdir $FLUTTER_SDK
+      - git clone https://github.com/flutter/flutter.git $FLUTTER_SDK -b stable
+      - export PATH="$PATH:$FLUTTER_SDK/bin"
       - flutter precache
       - flutter doctor
-build:
-  commands:
-    - echo Build started on `date`
-    - flutter build apk --no-shrink
-    - ls -al
-  post_build:
+  build:
     commands:
-      - echo Build completed on `date`
+      - echo Build started
+      - flutter build apk
+post_build:
+  commands:
+    - echo Build completed
 artifacts:
   files:
     - build/app/outputs/apk/release/*.apk
