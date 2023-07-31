@@ -18,6 +18,7 @@ phases:
       - echo "Installing Android SDK"
       - sudo apt-get update -y
       - sudo apt-get install -y android-sdk
+      - android/Sdk/tools/bin/sdkmanager –licenses
   build:
     commands:
       - echo Build started
