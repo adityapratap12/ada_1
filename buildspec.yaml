@@ -13,6 +13,8 @@ phases:
       - mkdir $FLUTTER_SDK
       - git clone https://github.com/flutter/flutter.git $FLUTTER_SDK -b stable
       - export PATH="$PATH:$FLUTTER_SDK/bin"
+      - echo "export ANDROID_SDK_ROOT=/usr/lib/android-sdk" >> $HOME/.bashrc
+      - export PATH=$PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin
       - flutter precache
       - flutter doctor
   build:
