@@ -12,15 +12,14 @@ phases:
       - export FLUTTER_SDK=$CODEBUILD_SRC_DIR/flutter-sdk
       - mkdir $FLUTTER_SDK
       - git clone https://github.com/flutter/flutter.git $FLUTTER_SDK -b stable
+      - ls
       - export PATH="$PATH:$FLUTTER_SDK/bin"
       - flutter precache
-      - flutter doctor
+      - flutter pub get
       - echo "Installing Android SDK"
       - sudo apt-get update -y
       - sudo apt-get install -y android-sdk
-      - sdkmanager --list
-      - sdkmanager --install "cmdline-tools;latest"
-      - flutter doctor --android-licenses
+      - sdkmanager.bat --licenses
       - flutter doctor
   build:
     commands:
