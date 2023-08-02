@@ -18,14 +18,15 @@ phases:
       - echo "Installing Android SDK"
       - sudo apt-get update -y
       - sudo apt-get install -y android-sdk
+      - flutter doctor --android-licenses
   build:
     commands:
       - echo Build started
-      - flutter build appbundle
+      - flutter build apk
 post_build:
   commands:
     - echo Build completed
 artifacts:
   files:
-    - build/app/outputs/apk/release/*.aab
+    - build/app/outputs/apk/release/*.apk
   discard-paths: yes
