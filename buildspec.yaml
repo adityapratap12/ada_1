@@ -5,31 +5,29 @@ phases:
     runtime-versions:
       java: corretto11
     commands:
-      - echo $CODEBUILD_SRC_DIR
+      - echo "Installing Flutter SDK"
+      - wget -O flutter.tar.xz https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_2.2.3-stable.tar.xz
+      - tar xf flutter.tar.xz
+      - - export PATH="$PATH:`pwd`/flutter/bin"
+      - flutter precache
+      - echo "Installing Android SDK"
+      - wget -O sdk-tools.zip https://dl.google.com/android/repository/commandlinetools-linux-6858069_latest.zip
+      - unzip sdk-tools.zip -d android-sdk
+      - export PATH="$PATH:`pwd`/android-sdk/cmdline-tools/bin:`pwd`/android-sdk/platform-tools"
+      - yes | sdkmanager --licenses
+      - sdkmanager "platforms;android-30" "build-tools;30.0.3"
   pre_build:
     commands:
-      - echo Installing flutter dependencies
-      - export FLUTTER_SDK=$CODEBUILD_SRC_DIR/flutter-sdk
-      - mkdir $FLUTTER_SDK
-      - git clone https://github.com/flutter/flutter.git $FLUTTER_SDK -b stable
-      - export PATH="$PATH:$FLUTTER_SDK/bin"
-      - flutter precache
-      - flutter pub get
-      - echo "Installing Android SDK"
-      - sudo apt-get update -y
-      - sudo apt-get install -y android-sdk
-      - path/to/sdkmanager --install "cmdline-tools;latest"
-      - flutter doctor --android-licenses
-      - ls
-      - flutter doctor
+     - echo "Fetching dependencies"
+     - flutter pub get
   build:
     commands:
-      - echo Build started
-      - flutter build apk
+      - echo "Build started"
+      - flutter build appbundle
 post_build:
   commands:
-    - echo Build completed
+    - echo Build completed on `date`
 artifacts:
   files:
-    - build/app/outputs/apk/release/*.apk
+    - build/app/outputs/apk/release/app-release.aab
   discard-paths: yes
