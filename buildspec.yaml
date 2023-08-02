@@ -13,7 +13,7 @@ phases:
       - mkdir $FLUTTER_SDK
       - git clone https://github.com/flutter/flutter.git $FLUTTER_SDK -b stable
       - ls
-      - cd lib
+      - cd android
       - ls
       - cd ..
       - export PATH="$PATH:$FLUTTER_SDK/bin"
