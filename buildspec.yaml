@@ -13,6 +13,7 @@ phases:
   build:
     commands:
       - echo Build started
+      - git config --global --add safe.directory /home/mobiledevops/.flutter-sdk
       - flutter build apk
 post_build:
   commands:
