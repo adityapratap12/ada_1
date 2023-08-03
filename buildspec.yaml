@@ -18,6 +18,7 @@ phases:
       - echo "Installing Android SDK"
       - sudo apt-get update -y
       - sudo apt-get install -y android-sdk
+      - flutter doctor --android-licenses
       - ls
       - flutter doctor
   build:
