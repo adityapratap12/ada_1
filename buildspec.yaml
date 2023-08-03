@@ -16,6 +16,8 @@ phases:
       - flutter precache
       - flutter pub get
       - echo "Installing Android SDK"
+      - export ANDROID_SDK=$CODEBUILD_SRC_DIR/flutter-sdk
+      - mkdir $ANDROID_SDK
       - sudo apt-get update -y
       - sudo apt-get install -y android-sdk
       - ls
