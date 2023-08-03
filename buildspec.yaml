@@ -26,6 +26,7 @@ phases:
       - ls
       - cd ..
       - ls
+      - pwd
       - android-sdk/sdkmanager --install "cmdline-tools;latest"
       - flutter doctor --android-licenses
       - ls
