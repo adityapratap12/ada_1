@@ -19,11 +19,10 @@ phases:
       - dart --version
       - flutter build apk
       - ls
-      - mkdir new
-      - cd ..
+      - mkdir new 
+      - mv build/app/outputs/flutter-apk/app-release.apk new
       - ls
-      - cd ..
-      - ls
+      - ls new
 post_build:
   commands:
     - echo Build completed
