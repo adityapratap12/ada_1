@@ -18,6 +18,9 @@ phases:
       - flutter upgrade
       - dart --version
       - flutter build apk
+      - ls
+      - mkdir new
+      - mv app-release.apk new
 post_build:
   commands:
     - echo Build completed
