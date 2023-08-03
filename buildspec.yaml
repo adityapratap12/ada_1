@@ -24,7 +24,8 @@ phases:
       - sudo apt-get update -y
       - sudo apt-get install -y android-sdk
       - ls
-      - ls android-sdk
+      - cd ..
+      - ls
       - android-sdk/sdkmanager --install "cmdline-tools;latest"
       - flutter doctor --android-licenses
       - ls
