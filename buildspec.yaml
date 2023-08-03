@@ -8,27 +8,8 @@ phases:
       - echo $CODEBUILD_SRC_DIR
   pre_build:
     commands:
-      - echo Installing flutter dependencies
-      - export FLUTTER_SDK=$CODEBUILD_SRC_DIR/flutter-sdk
-      - mkdir $FLUTTER_SDK
-      - git clone https://github.com/flutter/flutter.git $FLUTTER_SDK -b stable
-      - export PATH="$PATH:$FLUTTER_SDK/bin"
-      - flutter precache
-      - flutter pub get
-      - ls flutter-sdk
-      - ls
-      - echo "Installing Android SDK"
-      - export ANDROID_SDK=$CODEBUILD_SRC_DIR/android-sdk
-      - mkdir $ANDROID_SDK
-      - cd android-sdk
-      - sudo apt update
-      - sudo apt -y install android-sdk-build-tools "cmdline-tools;latest"
-      - ls
-      - cd ..
-      - android-sdk/sdkmanager --install "cmdline-tools;latest"
-      - flutter doctor --android-licenses
-      - ls
       - flutter doctor
+      - ls
   build:
     commands:
       - echo Build started
