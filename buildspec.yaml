@@ -18,13 +18,15 @@ phases:
       - flutter upgrade
       - dart --version
       - flutter build apk
+      - mkdir new 
+      - mv build/app/outputs/flutter-apk/app-release.apk new
       - ls
 post_build:
   commands:
     - echo Build completed
 artifacts:
   files:
-    - build/app/outputs/flutter-apk/app-release.apk
+    - "**/*"
   discard-paths: no
-  base-directory: $CODEBUILD_SRC_DIR
+  base-directory: new
   
