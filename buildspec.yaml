@@ -15,15 +15,17 @@ phases:
       - export PATH="$PATH:$FLUTTER_SDK/bin"
       - flutter precache
       - flutter pub get
+      - ls flutter-sdk
       - ls
       - echo "Installing Android SDK"
       - export ANDROID_SDK=$CODEBUILD_SRC_DIR/android-sdk
       - mkdir $ANDROID_SDK
+      - cd android-sdk
       - sudo apt-get update -y
       - sudo apt-get install -y android-sdk
       - ls
       - ls android-sdk
-      - path/to/sdkmanager --install "cmdline-tools;latest"
+      - android-sdk/sdkmanager --install "cmdline-tools;latest"
       - flutter doctor --android-licenses
       - ls
       - flutter doctor
