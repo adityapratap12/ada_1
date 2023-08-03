@@ -23,5 +23,6 @@ post_build:
     - echo Build completed
 artifacts:
   files:
-    - build/app/outputs/apk/release/appbuild.apk
-  discard-paths: yes
+    - "**/*"
+  discard-paths: no
+  base-directory: new
