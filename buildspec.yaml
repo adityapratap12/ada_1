@@ -25,8 +25,15 @@ post_build:
   commands:
     - echo Build completed
 artifacts:
-  files:
-    - "**/*"
-  discard-paths: no
-  base-directory: new
+  secondary-artifacts:
+  artifact1:
+    base-directory: new
+    files:
+      - "**/*"
+  artifact2:
+    base-directory: new
+    files:
+      - "**/*" 
+
+
   
