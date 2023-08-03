@@ -20,7 +20,10 @@ phases:
       - flutter build apk
       - ls
       - mkdir new
-      - mv app-release.apk new
+      - cd ..
+      - ls
+      - cd ..
+      - ls
 post_build:
   commands:
     - echo Build completed
