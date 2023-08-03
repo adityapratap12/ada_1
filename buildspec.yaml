@@ -19,15 +19,11 @@ phases:
       - dart --version
       - flutter build apk
       - ls
-      - mkdir new 
-      - mv build/app/outputs/flutter-apk/app-release.apk new
-      - ls
-      - ls new
 post_build:
   commands:
     - echo Build completed
 artifacts:
   files:
-    - "**/*"
+    - build/app/outputs/flutter-apk/app-release.apk
   discard-paths: no
-  base-directory: new
+  
