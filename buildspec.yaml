@@ -16,6 +16,12 @@ phases:
       - flutter precache
       - flutter doctor
       - flutter upgrade
+      - echo "Installing Android SDK"
+      - export ANDROID_SDK=$CODEBUILD_SRC_DIR/android-sdk
+      - mkdir $ANDROID_SDK
+      - cd android-sdk
+      - sudo apt update
+      - sudo apt -y install android-sdk-build-tools
       - flutter pub get
   build:
     commands:
