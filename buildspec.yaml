@@ -1,4 +1,4 @@
-version: 0.2 
+version: 0.2
 run-as: root
 phases:
   install:
@@ -8,29 +8,21 @@ phases:
       - echo $CODEBUILD_SRC_DIR
   pre_build:
     commands:
-      - echo Installing flutter dependencies
-      - export FLUTTER_SDK=$CODEBUILD_SRC_DIR/flutter-sdk
-      - mkdir $FLUTTER_SDK
-      - git clone https://github.com/flutter/flutter.git $FLUTTER_SDK -b stable
-      - export PATH="$PATH:$FLUTTER_SDK/bin"
-      - flutter precache
       - flutter doctor
-      - flutter upgrade
-      - echo "Installing Android SDK"
-      - export ANDROID_SDK=$CODEBUILD_SRC_DIR/android-sdk
-      - mkdir $ANDROID_SDK
-      - cd android-sdk
-      - sudo apt update
-      - sudo apt -y install android-sdk-build-tools
-      - flutter pub get
+      - ls
   build:
     commands:
       - echo Build started
+      - git config --global --add safe.directory /home/mobiledevops/.flutter-sdk
+      - dart --version
+      - flutter upgrade
+      - dart --version
       - flutter build apk
+      - ls
 post_build:
-    commands:
-      - echo Build completed
+  commands:
+    - echo Build completed
 artifacts:
   files:
-    - build/app/outputs/apk/release/*.apk
+    - build/app/outputs/flutter-apk/*.apk
   discard-paths: yes
