@@ -15,6 +15,7 @@ phases:
       - export PATH="$PATH:$FLUTTER_SDK/bin"
       - flutter precache
       - flutter doctor
+      - flutter pub get
   build:
     commands:
       - echo Build started
