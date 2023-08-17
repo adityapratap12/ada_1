@@ -3,7 +3,6 @@
 A new Flutter project.
 
 ## Getting Started
-test
 
 This project is a starting point for a Flutter application.
 
