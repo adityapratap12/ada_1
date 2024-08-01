@@ -14,5 +14,7 @@ samples, guidance on mobile development, and a full API reference.
 
 # End Goal
 
-this project will be fetched by the code pipeline in Aws.
-step 2> It will be build using code Build 
+**step 1**> This project will be fetched by the code pipeline in Aws.
+**step 2**> It will be build using code Build in Aws
+**step 3**> After building it will be store in S3
+**step 4**> From S3 A mail will be sent to tester so they can be notified and and in mail Downladable link is also avilable .
